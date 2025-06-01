@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TUPOP GAMING</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <title>Tupop Gaming</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .banner-img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .tournament-card img {
+      border-radius: 10px;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 30px;
+    }
+    footer {
+      background: #dcdcdc;
+      padding: 40px 20px;
+    }
+    .social-icons i {
+      font-size: 24px;
+      margin: 0 10px;
+    }
+  </style>
 </head>
 <body>
 
@@ -50,70 +69,80 @@
   </button>
 </div>
 
-
 <!-- Navigation Buttons -->
 <section class="container text-center mb-3 ">
-    <a class="btn btn-outline-dark me-4" href="#" role="button"><u>Top Up</u></a>
-    <a class="btn btn-dark" href="<?= base_url('event') ?>" role="button">Event</a>
+    <a class="btn btn-dark me-4" href="<?= base_url('/') ?>" role="button">Top Up</a>
+    <a class="btn btn-outline-dark" href="#" role="button"><u>Event</u></a>
     <a class="btn btn-dark ms-4" href="<?= base_url('artikel') ?>" role="button">Artikel</a>
 </section>
 
-<!-- Game Cards -->
-<section class="container mb-4">
+<!-- Event Sedang Berlangsung -->
+<div class="container">
+  <p class="fw-bold">Acara sedang berlangsung</p>
+  <div class="card mb-3">
+    <img src="<?= base_url('asset/img/Slider.png') ?>" class="card-img-top" alt="Event">
+    <div class="card-body d-flex align-items-center">
+        <div class="me-3">
+            <img src="<?= base_url('asset/img/BS_Icon.png') ?>" alt="Event Logo" style="width: 80px; border-radius: 10px;">
+        </div>
+        <div>
+            <h5 class="mb-1">Blood Strike - FPS untuk Semua</h5>
+            <p class="mb-0 text-muted">NetEase Games</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tournament Section -->
+<div class="container">
+  <h3 class="section-title">Tournament</h3>
   <div class="row row-cols-2 row-cols-md-4 g-3">
-    <!-- Ulangi elemen ini untuk setiap game -->
+    <!-- Card Tournament -->
     <div class="col">
-      <div class="card h-100 rounded-5" >
-        <img src="<?= base_url('asset/img/Card_1.png') ?>" class="card-img-top" alt="Game 1">
+      <div class="card tournament-card">
+        <img src="<?= base_url('asset/img/Event_1.png') ?>" class="card-img-top" alt="Tournament 1">
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-        <img src="<?= base_url('asset/img/Card_2.png') ?>" class="card-img-top" alt="Game 2">
+    <div class="col">
+      <div class="card tournament-card">
+        <img src="<?= base_url('asset/img/Event_2.png') ?>" class="card-img-top" alt="Tournament 2">
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_3.png') ?>" class="card-img-top" alt="Game 3">
+    <div class="col">
+      <div class="card tournament-card">
+        <img src="<?= base_url('asset/img/Event_3.png') ?>" class="card-img-top" alt="Tournament 3">
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_4.png') ?>" class="card-img-top" alt="Game 4">
+    <div class="col">
+      <div class="card tournament-card">
+        <img src="<?= base_url('asset/img/Event_4.png') ?>" class="card-img-top" alt="Tournament 4">
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_5.png') ?>" class="card-img-top" alt="Game 5">
+    <div class="col">
+      <div class="card tournament-card">
+        <img src="<?= base_url('asset/img/Event_5.png') ?>" class="card-img-top" alt="Tournament 5">
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_6.png') ?>" class="card-img-top" alt="Game 6">
+    <div class="col">
+      <div class="card tournament-card">
+        <img src="<?= base_url('asset/img/Event_6.png') ?>" class="card-img-top" alt="Tournament 6">
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_7.png') ?>" class="card-img-top" alt="Game 7">
+    <div class="col">
+      <div class="card tournament-card">
+        <img src="<?= base_url('asset/img/Event_7.png') ?>" class="card-img-top" alt="Tournament 7">
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_8.png') ?>" class="card-img-top" alt="Game 8">
+    <div class="col">
+      <div class="card tournament-card">
+        <img src="<?= base_url('asset/img/Event_8.png') ?>" class="card-img-top" alt="Tournament 8">
       </div>
     </div>
   </div>
   <div class="text-center mt-3">
-    <a class="btn btn-dark" href="#" role="button">Tampilkan lainnya...</a>
+    <button class="btn btn-dark">Tampilkan lainnya...</button>
   </div>
-</section>
+</div>
 
 <!-- About Section -->
 <section class="bg-light py-5">
@@ -141,8 +170,9 @@
   <small>&copy; 2025 Tupop Gaming. All Right Reserved</small>
 </footer>
 
-<!-- Bootstrap & Icons -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- Bootstrap Icons (optional) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 </body>
 </html>

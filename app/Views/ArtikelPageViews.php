@@ -53,67 +53,99 @@
 
 <!-- Navigation Buttons -->
 <section class="container text-center mb-3 ">
-    <a class="btn btn-outline-dark me-4" href="#" role="button"><u>Top Up</u></a>
+    <a class="btn btn-dark me-4" href="<?= base_url('/') ?>" role="button">Top Up</a>
     <a class="btn btn-dark" href="<?= base_url('event') ?>" role="button">Event</a>
-    <a class="btn btn-dark ms-4" href="<?= base_url('artikel') ?>" role="button">Artikel</a>
+    <a class="btn btn-outline-dark ms-4" href="<?= base_url('#') ?>" role="button"><u>Artikel</u></a>
 </section>
 
-<!-- Game Cards -->
-<section class="container mb-4">
-  <div class="row row-cols-2 row-cols-md-4 g-3">
-    <!-- Ulangi elemen ini untuk setiap game -->
-    <div class="col">
-      <div class="card h-100 rounded-5" >
-        <img src="<?= base_url('asset/img/Card_1.png') ?>" class="card-img-top" alt="Game 1">
+<!-- Artikel Cards -->
+<div class="container my-4">
+  <div class="row g-3">
+    <!-- Card 1 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card bg-light text-dark h-100">
+        <img src="<?= base_url('asset/img/Artikel_1.png') ?>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="card-title">Judul Card</h6>
+          <p class="card-text">Deskripsi singkat atau konten lainnya.</p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-dark btn-sm">Lihat Detail</button>
+        </div>
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-        <img src="<?= base_url('asset/img/Card_2.png') ?>" class="card-img-top" alt="Game 2">
+
+    <!-- Card 2 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card bg-light text-dark h-100">
+        <img src="<?= base_url('asset/img/Artikel_2.png') ?>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="card-title">Build Kimmy</h6>
+          <p class="card-text">EXPONENTIAL LAB #5</p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-dark btn-sm">Lihat Detail</button>
+        </div>
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_3.png') ?>" class="card-img-top" alt="Game 3">
+
+    <!-- Card 3 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card bg-light text-dark h-100">
+        <img src="<?= base_url('asset/img/Artikel_3.png') ?>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="card-title">Build Kimmy</h6>
+          <p class="card-text">EXPONENTIAL LAB #5</p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-dark btn-sm">Lihat Detail</button>
+        </div>
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_4.png') ?>" class="card-img-top" alt="Game 4">
+
+    <!-- Card 4 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card bg-light text-dark h-100">
+        <img src="<?= base_url('asset/img/Artikel_4.png') ?>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="card-title">Build Kimmy</h6>
+          <p class="card-text">EXPONENTIAL LAB #5</p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-dark btn-sm">Lihat Detail</button>
+        </div>
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_5.png') ?>" class="card-img-top" alt="Game 5">
+
+    <!-- Card 5 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card bg-light text-dark h-100">
+        <img src="<?= base_url('asset/img/Artikel_5.png') ?>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="card-title">Build Kimmy</h6>
+          <p class="card-text">EXPONENTIAL LAB #5</p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-dark btn-sm">Lihat Detail</button>
+        </div>
       </div>
     </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_6.png') ?>" class="card-img-top" alt="Game 6">
-      </div>
-    </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_7.png') ?>" class="card-img-top" alt="Game 7">
-      </div>
-    </div>
-    <!-- Tambahkan game lainnya sesuai desain -->
-     <div class="col">
-      <div class="card h-100 rounded-5">
-            <img src="<?= base_url('asset/img/Card_8.png') ?>" class="card-img-top" alt="Game 8">
+
+    <!-- Card 6 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card bg-light text-dark h-100">
+        <img src="<?= base_url('asset/img/Artikel_6.png') ?>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="card-title">Build Kimmy</h6>
+          <p class="card-text">EXPONENTIAL LAB #5</p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-dark btn-sm">Lihat Detail</button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="text-center mt-3">
-    <a class="btn btn-dark" href="#" role="button">Tampilkan lainnya...</a>
-  </div>
-</section>
+</div>
 
 <!-- About Section -->
 <section class="bg-light py-5">
