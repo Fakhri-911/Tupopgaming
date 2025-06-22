@@ -11,7 +11,7 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
   <div class="container">
     <div class="navbar-brand">
         <a class="navbar-brand" href="#"><i class="bi bi-globe2"></i></a>
@@ -20,10 +20,18 @@
     <div class="col-md-6 col-12">
         <input type="text" class="form-control" placeholder="Search">
     </div>
-    <div>
-      <button class="btn btn-dark me-2">Sign In</button>
+
+    <!-- User Greeting and Logout Button -->
+    <div class="d-flex align-items-center">      
+      <?php if (session()->get('logged_in')): ?>
+        <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger me-2">Logout</a>
+      <?php else: ?>
+        <a href="<?= base_url('login') ?>" class="btn btn-dark me-2">Sign In</a>
+        <a href="<?= base_url('register') ?>" class="btn btn-outline-primary me-2">Register</a>
+      <?php endif; ?>
       <img src="https://flagcdn.com/id.svg" alt="ID" width="24" />
     </div>
+    
   </div>
 </nav>
 
@@ -110,7 +118,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center mt-3">
+  <div class="text-center mt-5 mb-5">
     <a class="btn btn-dark" href="#" role="button">Tampilkan lainnya...</a>
   </div>
 </section>
