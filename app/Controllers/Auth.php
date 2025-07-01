@@ -15,50 +15,60 @@ class Auth extends Controller
 
     public function auth()
     {
-        $session = session();
-        $model = new UserModel();
+        $session = session(); //
+        $login = $this->request->getVar('login'); // bisa username atau email
+        $password = $this->request->getVar('password'); //
 
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-
-        // Validasi input
+        // New: Set up rules for login validation
         $rules = [
-            'email'    => 'required|valid_email',
-            'password' => 'required|min_length[6]', // Sesuaikan panjang minimum
+            'login'    => 'required',
+            'password' => 'required'
         ];
 
+        // New: Perform validation
         if (!$this->validate($rules)) {
-            // Jika validasi gagal, kembalikan ke form login dengan error
-            $session->setFlashdata('errors', $this->validator->getErrors());
-            return redirect()->back()->withInput();
+            // Pass validation errors to the view using 'errors' flashdata
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        $user = $model->getUserByEmail($email);
+        // Original logic starts here, after validation
+        // Jika input valid email → login sebagai user
+        if (filter_var($login, FILTER_VALIDATE_EMAIL)) { //
+            $userModel = new \App\Models\UserModel(); //
+            $user = $userModel->where('email', $login)->first(); //
 
-        if ($user) {
-            // Verifikasi password yang di-hash
-            if ($password === $user['password']) { // Ganti dengan metode hash yang sesuai
-                // Jika password cocok, buat sesi login
-                $ses_data = [
-                    'id'        => $user['id'],
-                    'email'     => $user['email'],
-                    'logged_in' => TRUE
-                ];
-                $session->set($ses_data);
-
-                // Redirect ke halaman home
-                return redirect()->to(base_url('/'));
-            } else {
-                // Password salah
-                $session->setFlashdata('error', 'Password salah.');
-                return redirect()->back()->withInput();
+            if ($user && password_verify($password, $user['password'])) { //
+                $session->set([ //
+                    'id'        => $user['id'], //
+                    'email'     => $user['email'], //
+                    'role'      => 'user', //
+                    'logged_in' => true //
+                ]);
+                return redirect()->to('/'); //
             }
+
         } else {
-            // Email tidak ditemukan
-            $session->setFlashdata('error', 'Email tidak terdaftar.');
-            return redirect()->back()->withInput();
+            // Jika bukan email, asumsikan username → login sebagai admin
+            $adminModel = new \App\Models\AdminModel();
+            $admin = $adminModel->where('username', $login)->first();
+
+            if ($admin && password_verify($password, $admin['password'])) {
+                $session->set([
+                    'id'        => $admin['id'],
+                    'username'  => $admin['username'],
+                    'role'      => 'admin',
+                    'logged_in' => true
+                ]);
+                return redirect()->to('/dashboard');
+            }
         }
+
+        // If not found, use a generic error message
+        $session->setFlashdata('error', 'Email/Username atau password salah.'); // Adjusted message
+        return redirect()->back()->withInput(); //
     }
+
+
 
     public function logout()
     {
@@ -71,13 +81,15 @@ class Auth extends Controller
 
     public function register()
     {
-        // Tampilkan form pendaftaran
+        helper(['form']);
         return view('RegisterForm');
     }
 
-    public function authregister()
-{
-    if ($this->request->getMethod() === 'post') {
+
+    public function saveRegister()
+    {
+        helper(['form']);
+
         $rules = [
             'email'            => 'required|valid_email|is_unique[users.email]',
             'password'         => 'required|min_length[6]',
@@ -85,26 +97,21 @@ class Auth extends Controller
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return view('RegisterForm', [
+                'validation' => $this->validator
+            ]);
         }
 
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-
-        $userModel = new UserModel();
+        $userModel = new \App\Models\UserModel();
         $userModel->save([
-            'email'    => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT)
+            'email'    => $this->request->getVar('email'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
         ]);
 
-        return redirect()->to('/login')->with('success', 'Registrasi berhasil. Silakan login.');
+        return redirect()->to('/login')->with('success', 'Registrasi berhasil!');
     }
 
-    else {
-            // Email tidak ditemukan
-            $session->setFlashdata('error', 'AJA DULU.');
-            return redirect()->back()->withInput();
-        }
-}
+
+
 
 }

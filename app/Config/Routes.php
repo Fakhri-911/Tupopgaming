@@ -5,14 +5,23 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
+ // halaman utama
+$routes->get('/', 'Home::index');
+
 // test koneksi database
 $routes->get('/testdb', 'TestDB::index');
 
 // halaman dasboard
-$routes->get('/dashboard', 'Dashboard::index');
-
-// halaman utama
-$routes->get('/', 'Home::index');
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+    $routes->get('dashboard', 'Dashboard::index');
+    $routes->get('banners', 'Dashboard::banners');
+    $routes->get('games', 'Dashboard::games');
+    $routes->get('articles', 'Dashboard::articles');
+    $routes->get('tournaments', 'Dashboard::tournaments');
+    $routes->get('transactions', 'Dashboard::transactions');
+    $routes->get('history', 'Dashboard::history');
+});
 
 // secondary pages
 $routes->get('/event', 'Event::index');
@@ -26,7 +35,6 @@ $routes->post('/login/auth', 'Auth::auth');
 $routes->get('/auth/logout', 'Auth::logout');
 
 // route register
-$routes->get('/register', 'Auth::register');
-$routes->post('/register/authregister', 'Auth::authregister');
-
+$routes->get('/register', 'Auth::register');        // Tampilkan form
+$routes->post('/register/save', 'Auth::saveRegister'); // Proses simpan
 ?>

@@ -83,7 +83,12 @@
       </div>
 
       <form action="<?= base_url('/login/auth') ?>" method="post">
-        
+        <?= csrf_field() ?> <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        <?php endif; ?>
+
         <?php if ($errors = session()->getFlashdata('errors')): ?>
             <div class="alert alert-danger">
                 <?php foreach ($errors as $error): ?>
@@ -94,10 +99,9 @@
             <div class="alert alert-danger"><?= $error ?></div>
         <?php endif; ?>
 
-        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
         <div class="mb-3">
           <label class="form-label">Email</label>
-          <input type="email" class="form-control" placeholder="Email" name="email" required autofocus>
+          <input type="text" class="form-control" placeholder="Email" name="login" value="<?= old('login') ?>" required autofocus>
         </div>
         <div class="mb-2">
           <label class="form-label">Password</label>

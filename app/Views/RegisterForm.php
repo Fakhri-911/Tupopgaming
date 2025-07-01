@@ -81,22 +81,24 @@
             <h3 class="fw-bold">Register</h3>
         </div>
 
-        <form action="<?= base_url('/register/authregister') ?>" method="post">
+        <form action="<?= base_url('/register/save') ?>" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                <input type="email" class="form-control" placeholder="Email" id="email" name="email" value="<?= old('email') ?>" required>
             </div>      
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>      
             <div class="mb-3">
-                <label for="password2" class="form-label">Ketik Ulang Password</label>
-                <input type="password" class="form-control" id="password2" name="password2" placeholder="Password" required>
+                <label for="confirm_password" class="form-label">Ketik Ulang Password</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Password" required>
             </div>      
             <button type="submit" class="btn btn-dark w-100 mb-2">Register</button>
         </form>
-
+        <?php if (isset($validation)) : ?>
+          <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
+        <?php endif; ?>
       <p class="footer-text mt-4">©2025 Tugas Besar IMK. All Rights Reserved</p>
     </div>
   </div>
